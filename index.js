@@ -11,7 +11,15 @@ const handle = require("./handlers");
 const db = require("./models");
 const routes = require("./routes");
 
-const port = process.env.PORT;
+if (process.env.NODE_ENV == "production") {
+  app.use(express.static("client/build"));
+  const path = require("path");
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "client", "build", "index.html"));
+  });
+}
+
+const port = process.env.PORT || 8000;
 app.listen(port, function () {
   console.log(`Server started at port ${port}`);
 });
