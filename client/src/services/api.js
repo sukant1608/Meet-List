@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const host = "http://localhost:5000/api";
+const host = "https://meet-list.herokuapp.com/api";
 
 export const setToken = (token) => {
   if (token) {
